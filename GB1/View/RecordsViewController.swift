@@ -40,7 +40,7 @@ extension RecordsViewController: UITableViewDataSource {
         // Configure content.
         content.image = UIImage(systemName: "star")
         content.text = "Игра \(score.number)"
-        content.secondaryText = "\(score.sum)"
+        content.secondaryText = "\(score.sum) (\(score.percent)%)"
 
         // Customize appearance.
         content.imageProperties.tintColor = .purple

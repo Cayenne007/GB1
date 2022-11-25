@@ -50,6 +50,9 @@ class GameSession: GameViewControllerDelegate {
     var questionsCount: Int {
         Game.shared.questions.count
     }
+    var percentOfSucces: Int {
+        Int(Double(currentQuestion + 1) / Double(questionsCount) * 100.0)
+    }
     
     var collectedMoney = 0
     var moneyTitle: String {

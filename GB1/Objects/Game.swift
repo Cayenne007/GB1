@@ -21,7 +21,10 @@ class Game {
     
     func gameOver() {
         let number = score.max{$0.number < $1.number}?.number ?? 0
-        let newScore = GameScore(number: number+1, sum: session?.collectedMoney ?? 0)
+        let newScore = GameScore(
+            number: number+1,
+            percent: session?.percentOfSucces ?? 0,
+            sum: session?.collectedMoney ?? 0)
         score.append(newScore)
         gameCaretaker.save(score: score)
         session = GameSession()

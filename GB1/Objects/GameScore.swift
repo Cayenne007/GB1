@@ -9,5 +9,6 @@ import Foundation
 
 struct GameScore: Codable {
     var number: Int
+    var percent: Int
     var sum: Int
 }
