@@ -21,7 +21,10 @@ class Game {
     
     func gameOver() {
         let number = score.max{$0.number < $1.number}?.number ?? 0
-        let newScore = GameScore(number: number+1, sum: session?.collectedMoney ?? 0)
+        let newScore = GameScore(
+            number: number+1,
+            percent: session?.percentOfSucces ?? 0,
+            sum: session?.collectedMoney ?? 0)
         score.append(newScore)
         gameCaretaker.save(score: score)
         session = GameSession()
@@ -39,17 +42,22 @@ class Game {
                 text: "Какая страна запустила первую межпланетную космическую станцию к Венере?",
                 answers: ["СССР", "США", "Китай", "Япония"],
                 correctAnswer: 0,
-                cost: 100),
+                cost: 50),
             Question(
                 text: "Где, если верить пословице, любопытной Варваре нос оторвали?",
                 answers: ["В клетке", "На улице", "На базаре", "На окошке"],
                 correctAnswer: 2,
+                cost: 50),
+            Question(
+                text: "Как назывался верховный орган власти в Древнем Риме?",
+                answers: ["Сенат", "Конгресс", "Дума", "Ареопаг"],
+                correctAnswer: 0,
                 cost: 100),
             Question(
                 text: "Как называют звезду, которая указала волхвам место рождения Христа?",
                 answers: ["Кассиопея", "Орион", "Полярная", "Вифлеемская"],
                 correctAnswer: 3,
-                cost: 200),
+                cost: 100),
             Question(
                 text: "Какой знак восточного гороскопа следует за знаком Дракона?",
                 answers: ["Змея", "Тигр", "Мышь", "Конь", "Рысь"],

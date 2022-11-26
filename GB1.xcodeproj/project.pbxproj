@@ -20,8 +20,6 @@
 		AB33BC46292EAAFB007136B2 /* AnswerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33BC44292EAAFB007136B2 /* AnswerTableViewCell.swift */; };
 		AB33BC47292EAAFB007136B2 /* AnswerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB33BC45292EAAFB007136B2 /* AnswerTableViewCell.xib */; };
 		AB33BC49292FC660007136B2 /* GameCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33BC48292FC660007136B2 /* GameCaretaker.swift */; };
-		AB33BC4D292FCBD4007136B2 /* Nofretete_Neues_Museum.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AB33BC4C292FCBD4007136B2 /* Nofretete_Neues_Museum.jpg */; };
-		AB33BC4F292FCC05007136B2 /* Yuri_Gagarin_with_awards.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AB33BC4E292FCC05007136B2 /* Yuri_Gagarin_with_awards.jpg */; };
 		AB33BC51292FD634007136B2 /* GameScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33BC50292FD634007136B2 /* GameScore.swift */; };
 		AB33BC53292FE20D007136B2 /* RecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33BC52292FE20D007136B2 /* RecordsViewController.swift */; };
 /* End PBXBuildFile section */
@@ -42,8 +40,6 @@
 		AB33BC44292EAAFB007136B2 /* AnswerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerTableViewCell.swift; sourceTree = "<group>"; };
 		AB33BC45292EAAFB007136B2 /* AnswerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnswerTableViewCell.xib; sourceTree = "<group>"; };
 		AB33BC48292FC660007136B2 /* GameCaretaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCaretaker.swift; sourceTree = "<group>"; };
-		AB33BC4C292FCBD4007136B2 /* Nofretete_Neues_Museum.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Nofretete_Neues_Museum.jpg; sourceTree = "<group>"; };
-		AB33BC4E292FCC05007136B2 /* Yuri_Gagarin_with_awards.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Yuri_Gagarin_with_awards.jpg; sourceTree = "<group>"; };
 		AB33BC50292FD634007136B2 /* GameScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScore.swift; sourceTree = "<group>"; };
 		AB33BC52292FE20D007136B2 /* RecordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -78,11 +74,9 @@
 		AB33BC1E292E69B1007136B2 /* GB1 */ = {
 			isa = PBXGroup;
 			children = (
-				AB33BC39292E77F7007136B2 /* Resources */,
 				AB33BC1F292E69B1007136B2 /* AppDelegate.swift */,
-				AB33BC3D292E800E007136B2 /* Objects */,
-				AB33BC33292E69D0007136B2 /* Model */,
 				AB33BC21292E69B1007136B2 /* SceneDelegate.swift */,
+				AB33BC3D292E800E007136B2 /* Objects */,
 				AB33BC36292E6A7B007136B2 /* View */,
 				AB33BC25292E69B1007136B2 /* Main.storyboard */,
 				AB33BC28292E69B2007136B2 /* Assets.xcassets */,
@@ -90,14 +84,6 @@
 				AB33BC2D292E69B2007136B2 /* Info.plist */,
 			);
 			path = GB1;
-			sourceTree = "<group>";
-		};
-		AB33BC33292E69D0007136B2 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				AB33BC34292E69E2007136B2 /* Question.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		AB33BC36292E6A7B007136B2 /* View */ = {
@@ -112,15 +98,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		AB33BC39292E77F7007136B2 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				AB33BC4C292FCBD4007136B2 /* Nofretete_Neues_Museum.jpg */,
-				AB33BC4E292FCC05007136B2 /* Yuri_Gagarin_with_awards.jpg */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		AB33BC3D292E800E007136B2 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +105,7 @@
 				AB33BC40292E8031007136B2 /* GameSession.swift */,
 				AB33BC48292FC660007136B2 /* GameCaretaker.swift */,
 				AB33BC50292FD634007136B2 /* GameScore.swift */,
+				AB33BC34292E69E2007136B2 /* Question.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -190,12 +168,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB33BC4F292FCC05007136B2 /* Yuri_Gagarin_with_awards.jpg in Resources */,
 				AB33BC2C292E69B2007136B2 /* LaunchScreen.storyboard in Resources */,
 				AB33BC29292E69B2007136B2 /* Assets.xcassets in Resources */,
 				AB33BC27292E69B1007136B2 /* Main.storyboard in Resources */,
 				AB33BC47292EAAFB007136B2 /* AnswerTableViewCell.xib in Resources */,
-				AB33BC4D292FCBD4007136B2 /* Nofretete_Neues_Museum.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

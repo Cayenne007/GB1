@@ -15,7 +15,8 @@ class AnswerTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        answerButton.titleLabel?.font = UIFont.systemFont(ofSize: 50)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
