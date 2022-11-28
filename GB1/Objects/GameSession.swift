@@ -9,26 +9,52 @@ import Foundation
 
 class GameSession: GameViewControllerDelegate {
     
-    var currentQuestion = 0
-    private var question: Question {
-        Game.shared.questions[currentQuestion]
-    }
+    //MARK: - Properties
     
+    var currentQuestion = 0
     var title: String {
         "Вопрос \(currentQuestion+1)"
     }
     var text: String {
         question.text
     }
-    
     var costTitle: String {
         "Стоимость вопроса: \(question.cost)"
     }
-    
-    
     var answers: [String] {
         question.answers
     }
+    var questionsCount: Int {
+        questions.count
+    }
+    var percentOfSucces: Int {
+        Int(Double(currentQuestion + 1) / Double(questionsCount) * 100.0)
+    }
+    
+    var collectedMoney = 0
+    var moneyTitle: String {
+        "Накоплено денег: \(collectedMoney)"
+    }
+    
+
+    //MARK: - Private properties
+    
+    private var questions: [Question] = []
+    private var question: Question {
+        questions[currentQuestion]
+    }
+    
+    
+    //MARK: - Life circle
+    
+    init() {
+        var strategy: QuestionOrderStrategy
+        strategy = Game.shared.randomOrder ? QuestionRandomOrder() : QuestionDirectOrder()
+        questions = strategy.getQuestions()
+    }
+    
+    
+    //MARK: - functions
     
     func confirm(tag: Int) -> GameResult {
         if question.correctAnswer == tag {
@@ -47,17 +73,6 @@ class GameSession: GameViewControllerDelegate {
     
     }
     
-    var questionsCount: Int {
-        Game.shared.questions.count
-    }
-    var percentOfSucces: Int {
-        Int(Double(currentQuestion + 1) / Double(questionsCount) * 100.0)
-    }
-    
-    var collectedMoney = 0
-    var moneyTitle: String {
-        "Накоплено денег: \(collectedMoney)"
-    }
     
 }
 

@@ -13,24 +13,35 @@ class GameCaretaker {
     private let decoder = JSONDecoder()
     private let key = "@millionere"
     
-    func save(score: [GameScore]) {
+    func save() {
+        let dataToSave = GameCare(randomOrder: Game.shared.randomOrder,
+                                  score: Game.shared.score)
         do {
-            let data = try encoder.encode(score)
+            let data = try encoder.encode(dataToSave)
             UserDefaults.standard.set(data, forKey: key)
         } catch {
             print(error.localizedDescription)
         }
     }
     
-    func load() -> [GameScore] {
+    func load() -> GameCare? {
         guard let data = UserDefaults.standard.data(forKey: key) else {
-            return []
+            return nil
         }
         do {
-            return try decoder.decode([GameScore].self, from: data)
+            let gameCare = try decoder.decode(GameCare.self, from: data)
+            return gameCare
+//            Game.shared.randomOrder = gameCare.randomOrder
+//            Game.shared.score = gameCare.score
         } catch {
-            return []
+            print(error.localizedDescription)
+            return nil
         }
     }
     
+}
+
+struct GameCare: Codable {
+    var randomOrder: Bool
+    var score: [GameScore]
 }

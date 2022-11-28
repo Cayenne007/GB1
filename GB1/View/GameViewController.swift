@@ -33,6 +33,8 @@ class GameViewController: UIViewController {
     var delegate: GameViewControllerDelegate!
     
     
+    //MARK: - Life circle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,6 +57,7 @@ class GameViewController: UIViewController {
 }
 
 extension GameViewController: UITableViewDataSource, UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         delegate.answers.count
     }

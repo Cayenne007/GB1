@@ -7,17 +7,36 @@
 
 import Foundation
 
+
 class Game {
     
     static var shared = Game()
     
+    
+    //MARK: - Properties
+    
     var session: GameSession?
+    var score: [GameScore] = []
+    var randomOrder = false
     
-    let questions: [Question]
     
-    var score: [GameScore]
+    //MARK: - Private properties
     
     private let gameCaretaker = GameCaretaker()
+    
+    
+    //MARK: - Life circle
+    
+    private init() {
+        guard let savedData = gameCaretaker.load() else {
+            return
+        }
+        randomOrder = savedData.randomOrder
+        score = savedData.score
+    }
+    
+    
+    //MARK: - Functions
     
     func gameOver() {
         let number = score.max{$0.number < $1.number}?.number ?? 0
@@ -26,61 +45,16 @@ class Game {
             percent: session?.percentOfSucces ?? 0,
             sum: session?.collectedMoney ?? 0)
         score.append(newScore)
-        gameCaretaker.save(score: score)
+        gameCaretaker.save()
         session = GameSession()
     }
     
     func removeRecords() {
         score.removeAll()
-        gameCaretaker.save(score: score)
+        gameCaretaker.save()
     }
     
-    
-    private init() {
-        questions = [
-            Question(
-                text: "Какая страна запустила первую межпланетную космическую станцию к Венере?",
-                answers: ["СССР", "США", "Китай", "Япония"],
-                correctAnswer: 0,
-                cost: 50),
-            Question(
-                text: "Где, если верить пословице, любопытной Варваре нос оторвали?",
-                answers: ["В клетке", "На улице", "На базаре", "На окошке"],
-                correctAnswer: 2,
-                cost: 50),
-            Question(
-                text: "Как назывался верховный орган власти в Древнем Риме?",
-                answers: ["Сенат", "Конгресс", "Дума", "Ареопаг"],
-                correctAnswer: 0,
-                cost: 100),
-            Question(
-                text: "Как называют звезду, которая указала волхвам место рождения Христа?",
-                answers: ["Кассиопея", "Орион", "Полярная", "Вифлеемская"],
-                correctAnswer: 3,
-                cost: 100),
-            Question(
-                text: "Какой знак восточного гороскопа следует за знаком Дракона?",
-                answers: ["Змея", "Тигр", "Мышь", "Конь", "Рысь"],
-                correctAnswer: 0,
-                cost: 200),
-            Question(
-                text: "Как называется боязнь глубины?",
-                answers: ["Пустомония", "Батофобия", "Психрофобия", "Астрафобия"],
-                correctAnswer: 1,
-                cost: 200),
-            Question(
-                text: "Сколько стран входит в состав Великобритании?",
-                answers: ["1", "2", "3", "4", "5"],
-                correctAnswer: 3,
-                cost: 500),
-            Question(
-                text: "Сколько процентов из жизни ленивцы проводят во сне?",
-                answers: ["50%", "75%", "100%", "150%"],
-                correctAnswer: 1,
-                cost: 500),
-                    ]
-        self.score = gameCaretaker.load()
-        self.session = GameSession()
+    func saveSettings() {
+        gameCaretaker.save()
     }
-    
 }
