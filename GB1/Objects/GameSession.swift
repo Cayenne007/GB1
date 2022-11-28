@@ -11,9 +11,10 @@ class GameSession: GameViewControllerDelegate {
     
     //MARK: - Properties
     
-    var currentQuestion = 0
+    var questionIndex = Observable<Int>(0)
+    
     var title: String {
-        "Вопрос \(currentQuestion+1)"
+        "Вопрос \(questionIndex.value + 1)"
     }
     var text: String {
         question.text
@@ -28,12 +29,16 @@ class GameSession: GameViewControllerDelegate {
         questions.count
     }
     var percentOfSucces: Int {
-        Int(Double(currentQuestion + 1) / Double(questionsCount) * 100.0)
+        Int(Double(questionIndex.value) / Double(questionsCount) * 100.0)
     }
     
     var collectedMoney = 0
     var moneyTitle: String {
-        "Накоплено денег: \(collectedMoney)"
+        if percentOfSucces == 0 {
+            return "Накоплено денег: \(collectedMoney)"
+        } else {
+            return "Накоплено денег: \(collectedMoney) (\(percentOfSucces)%)"
+        }
     }
     
 
@@ -41,7 +46,7 @@ class GameSession: GameViewControllerDelegate {
     
     private var questions: [Question] = []
     private var question: Question {
-        questions[currentQuestion]
+        questions[questionIndex.value]
     }
     
     
@@ -58,14 +63,18 @@ class GameSession: GameViewControllerDelegate {
     
     func confirm(tag: Int) -> GameResult {
         if question.correctAnswer == tag {
-            if currentQuestion == (questionsCount-1) {
+            
+            collectedMoney += question.cost
+            
+            if questionIndex.value == (questionsCount - 1) {
+                questionIndex.value += 1
                 Game.shared.gameOver()
                 return .gameOver
             } else {
-                collectedMoney += question.cost
-                currentQuestion += 1
+                questionIndex.value += 1
                 return .correctAnswer
             }
+            
         } else {
             Game.shared.gameOver()
             return .gameOver
