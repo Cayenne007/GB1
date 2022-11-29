@@ -31,8 +31,6 @@ class GameCaretaker {
         do {
             let gameCare = try decoder.decode(GameCare.self, from: data)
             return gameCare
-//            Game.shared.randomOrder = gameCare.randomOrder
-//            Game.shared.score = gameCare.score
         } catch {
             print(error.localizedDescription)
             return nil
