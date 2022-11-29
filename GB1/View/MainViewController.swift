@@ -14,6 +14,7 @@ class MainViewController: UIViewController {
             return
         }
         
+        Game.shared.session = GameSession()
         destination.delegate = Game.shared.session
         
     }

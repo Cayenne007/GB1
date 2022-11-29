@@ -15,6 +15,7 @@ protocol GameViewControllerDelegate: AnyObject {
     var answers: [String] {get}
     var costTitle: String {get}
     var moneyTitle: String {get}
+    var questionIndex: Observable<Int> {get}
     
     func confirm(tag: Int) -> GameResult
     
@@ -33,6 +34,8 @@ class GameViewController: UIViewController {
     var delegate: GameViewControllerDelegate!
     
     
+    //MARK: - Life circle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,6 +43,12 @@ class GameViewController: UIViewController {
         answerTableView.backgroundColor = .black
         
         configure()
+        
+        delegate.questionIndex.addObserver(self, options: [.new, .initial]) { [weak self] _, _ in
+            if let self = self {
+                self.moneyLabel.text = self.delegate.moneyTitle
+            }
+        }
         
     }
     
@@ -55,6 +64,7 @@ class GameViewController: UIViewController {
 }
 
 extension GameViewController: UITableViewDataSource, UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         delegate.answers.count
     }
@@ -81,7 +91,7 @@ extension GameViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        100
+        70
     }
     
     

@@ -1,43 +1,45 @@
 //
-//  Game.swift
+//  QuestionStore.swift
 //  GB1
 //
-//  Created by Cayenne on 23.11.2022.
+//  Created by Cayenne on 28.11.2022.
 //
 
 import Foundation
 
-class Game {
+class QuestionStore {
     
-    static var shared = Game()
+    static var shared = QuestionStore()
+    private let careTaker = QuestionsCaretaker()
     
-    var session: GameSession?
+    private init() {}
     
-    let questions: [Question]
-    
-    var score: [GameScore]
-    
-    private let gameCaretaker = GameCaretaker()
-    
-    func gameOver() {
-        let number = score.max{$0.number < $1.number}?.number ?? 0
-        let newScore = GameScore(
-            number: number+1,
-            percent: session?.percentOfSucces ?? 0,
-            sum: session?.collectedMoney ?? 0)
-        score.append(newScore)
-        gameCaretaker.save(score: score)
-        session = GameSession()
+    func set(_ questions: [Question]) {
+        careTaker.save(questions: questions)
     }
     
-    func removeRecords() {
-        score.removeAll()
-        gameCaretaker.save(score: score)
+    func add(_ question: Question) {
+        var questions = get().filter{$0.text != question.text}
+        questions.append(question)
+        set(questions)
     }
     
+    func del(_ question: Question) {
+        let questions = get().filter{$0.text != question.text}        
+        set(questions)
+    }
     
-    private init() {
-        questions = [
+    func del(title: String) {
+        let questions = get().filter{$0.text != title}
+        set(questions)
+    }
+    
+    func get() -> [Question] {
+        if let questions = careTaker.load() {
+            return questions
+        }
+        
+        return [
             Question(
                 text: "Какая страна запустила первую межпланетную космическую станцию к Венере?",
                 answers: ["СССР", "США", "Китай", "Япония"],
@@ -78,9 +80,8 @@ class Game {
                 answers: ["50%", "75%", "100%", "150%"],
                 correctAnswer: 1,
                 cost: 500),
-                    ]
-        self.score = gameCaretaker.load()
-        self.session = GameSession()
+        ]
+        
     }
     
 }
