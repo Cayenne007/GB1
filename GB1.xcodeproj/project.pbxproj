@@ -69,6 +69,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB214E44293647A500D18C63 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				AB33BC3E292E8027007136B2 /* Game.swift */,
+				AB33BC40292E8031007136B2 /* GameSession.swift */,
+				AB786BF929352E6F00BE293C /* QuestionStore.swift */,
+				AB33BC48292FC660007136B2 /* GameCaretaker.swift */,
+				AB786BF729351F9900BE293C /* QuestionsCaretaker.swift */,
+				AB786BF1293344C000BE293C /* QuestionOrderStrategy.swift */,
+				AB786BF32934ABA300BE293C /* Observable.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		AB214E452936489500D18C63 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AB33BC2A292E69B2007136B2 /* LaunchScreen.storyboard */,
+				AB33BC25292E69B1007136B2 /* Main.storyboard */,
+				AB33BC45292EAAFB007136B2 /* AnswerTableViewCell.xib */,
+				AB33BC28292E69B2007136B2 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		AB33BC13292E69B1007136B2 = {
 			isa = PBXGroup;
 			children = (
@@ -90,11 +115,10 @@
 			children = (
 				AB33BC1F292E69B1007136B2 /* AppDelegate.swift */,
 				AB33BC21292E69B1007136B2 /* SceneDelegate.swift */,
-				AB33BC3D292E800E007136B2 /* Objects */,
+				AB214E44293647A500D18C63 /* Manager */,
+				AB33BC3D292E800E007136B2 /* Model */,
 				AB33BC36292E6A7B007136B2 /* View */,
-				AB33BC25292E69B1007136B2 /* Main.storyboard */,
-				AB33BC28292E69B2007136B2 /* Assets.xcassets */,
-				AB33BC2A292E69B2007136B2 /* LaunchScreen.storyboard */,
+				AB214E452936489500D18C63 /* Resources */,
 				AB33BC2D292E69B2007136B2 /* Info.plist */,
 			);
 			path = GB1;
@@ -106,7 +130,6 @@
 				AB33BC37292E6A93007136B2 /* MainViewController.swift */,
 				AB33BC23292E69B1007136B2 /* GameViewController.swift */,
 				AB33BC44292EAAFB007136B2 /* AnswerTableViewCell.swift */,
-				AB33BC45292EAAFB007136B2 /* AnswerTableViewCell.xib */,
 				AB33BC52292FE20D007136B2 /* RecordsViewController.swift */,
 				AB786BEB2932312B00BE293C /* OptionsViewController.swift */,
 				AB786BF529351EEB00BE293C /* QuestionsManagmentViewController.swift */,
@@ -115,20 +138,13 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		AB33BC3D292E800E007136B2 /* Objects */ = {
+		AB33BC3D292E800E007136B2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AB33BC3E292E8027007136B2 /* Game.swift */,
-				AB786BF929352E6F00BE293C /* QuestionStore.swift */,
-				AB33BC40292E8031007136B2 /* GameSession.swift */,
-				AB33BC48292FC660007136B2 /* GameCaretaker.swift */,
-				AB786BF729351F9900BE293C /* QuestionsCaretaker.swift */,
 				AB33BC50292FD634007136B2 /* GameScore.swift */,
 				AB33BC34292E69E2007136B2 /* Question.swift */,
-				AB786BF1293344C000BE293C /* QuestionOrderStrategy.swift */,
-				AB786BF32934ABA300BE293C /* Observable.swift */,
 			);
-			path = Objects;
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

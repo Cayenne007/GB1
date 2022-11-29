@@ -13,7 +13,7 @@ class OptionsViewController: UIViewController {
     @IBOutlet weak var randomOrderSwitch: UISwitch!
     
     
-    //MARK: - Private variables
+    //MARK: - Private properties
     
     
     

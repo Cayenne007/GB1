@@ -24,10 +24,13 @@ class QuestionEditViewController: UIViewController {
     @IBOutlet weak var questionCost: UITextField!
     
     
+    //MARK: Properties
     
     var question: Question?
     var updateTable: (()->())!
 
+    
+    //MARK: - Life circle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +50,9 @@ class QuestionEditViewController: UIViewController {
         questionCost.text = "\(question?.cost ?? 0)"
         
     }
+    
+    
+    //MARK: Actions
     
     @IBAction func saveQuestion(_ sender: Any) {
         
